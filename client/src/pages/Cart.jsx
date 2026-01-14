@@ -26,7 +26,6 @@ const Cart = () => {
                 <h1 className="text-3xl font-bold mb-10 tracking-tight text-center md:text-left">Shopping Cart</h1>
 
                 <div className="flex flex-col lg:flex-row gap-12">
-                    {/* Cart Items List */}
                     <div className="lg:w-2/3 space-y-6">
                         {cartItems.map((item) => (
                             <div key={`${item.product._id}-${item.size}`} className="flex gap-6 bg-white p-6 rounded-lg shadow-sm border border-zinc-100 items-start">
@@ -67,9 +66,10 @@ const Cart = () => {
                                         </div>
                                         <button
                                             onClick={() => removeFromCart(item.product._id, item.size)}
-                                            className="text-sm text-red-500 hover:text-red-700 underline underline-offset-2"
+                                            className="ml-4 p-2 text-red-500 hover:bg-red-50 rounded-md transition-colors"
+                                            title="Remove item"
                                         >
-                                            Remove
+                                            <FaTrash size={16} />
                                         </button>
                                     </div>
                                 </div>
@@ -77,7 +77,6 @@ const Cart = () => {
                         ))}
                     </div>
 
-                    {/* Order Summary */}
                     <div className="lg:w-1/3">
                         <div className="bg-white p-8 rounded-lg shadow-lg border border-zinc-100 sticky top-24">
                             <h2 className="text-xl font-bold mb-6 tracking-tight">Order Summary</h2>

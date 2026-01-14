@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import { FaTimes, FaMinus, FaPlus } from 'react-icons/fa';
+import { FaTimes, FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CartSidebar = () => {
     const { isCartOpen, closeCart, cartItems, removeFromCart, updateQty } = useCart();
 
-    // Prevent body scroll when cart is open
     useEffect(() => {
         if (isCartOpen) {
             document.body.style.overflow = 'hidden';
@@ -25,7 +24,6 @@ const CartSidebar = () => {
         <AnimatePresence>
             {isCartOpen && (
                 <>
-                    {/* Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -34,7 +32,6 @@ const CartSidebar = () => {
                         className="fixed inset-0 bg-black/50 z-[60] backdrop-blur-sm"
                     />
 
-                    {/* Sidebar */}
                     <motion.div
                         initial={{ x: '100%' }}
                         animate={{ x: 0 }}
@@ -42,7 +39,6 @@ const CartSidebar = () => {
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                         className="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl flex flex-col"
                     >
-                        {/* Header */}
                         <div className="p-6 border-b border-zinc-100 flex justify-between items-center bg-white">
                             <h2 className="text-xl font-bold tracking-tight">Your Cart ({cartItems.length})</h2>
                             <button onClick={closeCart} className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-zinc-500">
@@ -50,7 +46,6 @@ const CartSidebar = () => {
                             </button>
                         </div>
 
-                        {/* Cart Items */}
                         <div className="flex-1 overflow-y-auto p-6 space-y-6">
                             {cartItems.length === 0 ? (
                                 <div className="h-full flex flex-col items-center justify-center text-center">
@@ -108,9 +103,10 @@ const CartSidebar = () => {
                                                 </div>
                                                 <button
                                                     onClick={() => removeFromCart(item.product._id, item.size)}
-                                                    className="text-xs text-zinc-400 hover:text-red-500 font-medium transition-colors"
+                                                    className="p-1 text-zinc-400 hover:text-red-500 transition-colors"
+                                                    title="Remove item"
                                                 >
-                                                    Remove
+                                                    <FaTrash size={14} />
                                                 </button>
                                             </div>
                                         </div>
@@ -119,7 +115,6 @@ const CartSidebar = () => {
                             )}
                         </div>
 
-                        {/* Footer */}
                         {cartItems.length > 0 && (
                             <div className="p-6 border-t border-zinc-100 bg-white shadow-[0_-5px_20px_rgba(0,0,0,0.02)]">
                                 <div className="flex justify-between items-center mb-4">

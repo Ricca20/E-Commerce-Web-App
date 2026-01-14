@@ -31,7 +31,7 @@ const addOrderItems = async (req, res) => {
             taxPrice,
             shippingPrice,
             totalPrice,
-            isPaid: true, // Mock payment
+            isPaid: true,
             paidAt: Date.now(),
         });
 
@@ -66,11 +66,8 @@ const addOrderItems = async (req, res) => {
                 subject: 'Order Confirmation - Clothing Brand',
                 message
             });
-            console.log("Email sent successfully");
-
         } catch (error) {
             console.error("Email could not be sent", error);
-            // We don't want to fail the order if email fails, just log it
         }
 
         res.status(201).json(createdOrder);

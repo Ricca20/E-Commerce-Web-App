@@ -7,224 +7,255 @@ const User = require('./models/User');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/clothing-brand-ecommerce');
 
 const products = [
-    // Men's T-shirts
     {
-        name: "Classic White Tee",
-        description: "A staple for every wardrobe. 100% Cotton.",
+        name: "Men's Classic White Tee",
+        description: "Premium cotton basic tee for everyday wear.",
         price: 25,
-        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
         category: "Men",
         type: "T-shirt",
         sizes: ["S", "M", "L", "XL"],
         stock: 50
     },
     {
-        name: "Graphic Print Tee",
-        description: "Bold graphic print for a modern look.",
-        price: 35,
-        image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Men",
-        type: "T-shirt",
-        sizes: ["M", "L", "XL"],
-        stock: 40
-    },
-    // Men's Hoodies
-    {
-        name: "Urban Pullover Hoodie",
-        description: "Soft fleece lining for warmth.",
-        price: 60,
-        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Men",
-        type: "Hoodie",
-        sizes: ["S", "M", "L", "XL"],
-        stock: 30
-    },
-    // Men's Jackets
-    {
-        name: "Denim Trucker Jacket",
-        description: "Classic denim jacket with a rugged finish.",
-        price: 85,
-        image: "https://images.unsplash.com/photo-1516257984-b1b4d8c92306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Men's Black Denim Jacket",
+        description: "Rugged black denim jacket with a modern fit.",
+        price: 89,
+        image: "https://images.unsplash.com/photo-1605908502724-9093a79a1b39?auto=format&fit=crop&w=800&q=80",
         category: "Men",
         type: "Jacket",
         sizes: ["M", "L", "XL"],
-        stock: 20
+        stock: 30
     },
-    // Men's Jeans
     {
-        name: "Slim Fit Blue Jeans",
-        description: "Stretch denim for comfort and style.",
+        name: "Men's Urban Hoodie",
+        description: "Comfortable grey hoodie for the city streets.",
         price: 55,
-        image: "https://images.unsplash.com/photo-1542272454374-d14070861217?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80",
+        category: "Men",
+        type: "Hoodie",
+        sizes: ["S", "M", "L", "XL"],
+        stock: 40
+    },
+    {
+        name: "Men's Slim Fit Jeans",
+        description: "Dark wash slim fit jeans with stretch.",
+        price: 65,
+        image: "https://images.unsplash.com/photo-1542272454374-d14070861217?auto=format&fit=crop&w=800&q=80",
         category: "Men",
         type: "Jeans",
-        sizes: ["28", "30", "32", "34"], // Adjusting for standard sizes but keeping S/M/L logic as per prompt or mapping them. Let's stick to prompt sizing for simplicity or map them.
-        // Prompt says Sizes: S, M, L, XL. I will use those for jeans too for simplicity as requested, or maybe I should stick to the requested set.
         sizes: ["S", "M", "L", "XL"],
-        stock: 60
+        stock: 45
     },
-
-    // Women's T-shirts
     {
-        name: "Striped Cotton Tee",
-        description: "Breathable striped t-shirt.",
+        name: "Men's Graphic Print Tee",
+        description: "Abstract graphic print t-shirt.",
+        price: 35,
+        image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80",
+        category: "Men",
+        type: "T-shirt",
+        sizes: ["S", "M", "L", "XL"],
+        stock: 35
+    },
+    {
+        name: "Men's Bomber Jacket",
+        description: "Olive green bomber jacket.",
+        price: 95,
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80",
+        category: "Men",
+        type: "Jacket",
+        sizes: ["M", "L", "XL"],
+        stock: 25
+    },
+    {
+        name: "Men's Navy Pullover",
+        description: "Classic navy pullover hoodie.",
+        price: 60,
+        image: "https://images.unsplash.com/photo-1614975058789-41316d0e2e9c?auto=format&fit=crop&w=800&q=80",
+        category: "Men",
+        type: "Hoodie",
+        sizes: ["M", "L", "XL"],
+        stock: 30
+    },
+    {
+        name: "Men's Ripped Jeans",
+        description: "Light wash jeans with distressed details.",
+        price: 70,
+        image: "https://images.unsplash.com/photo-1555689502-c4b22d76c56f?auto=format&fit=crop&w=800&q=80",
+        category: "Men",
+        type: "Jeans",
+        sizes: ["S", "M", "L", "XL"],
+        stock: 40
+    },
+    {
+        name: "Women's Striped Tee",
+        description: "Classic Breton stripe long sleeve t-shirt.",
+        price: 30,
+        image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&w=800&q=80",
+        category: "Women",
+        type: "T-shirt",
+        sizes: ["S", "M", "L"],
+        stock: 50
+    },
+    {
+        name: "Women's Leather Jacket",
+        description: "Faux leather moto jacket in black.",
+        price: 110,
+        image: "https://images.unsplash.com/photo-1551028919-ac7eed8e329b?auto=format&fit=crop&w=800&q=80",
+        category: "Women",
+        type: "Jacket",
+        sizes: ["S", "M", "L"],
+        stock: 20
+    },
+    {
+        name: "Women's Oversized Hoodie",
+        description: "Cozy beige oversized hoodie.",
+        price: 65,
+        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+        category: "Women",
+        type: "Hoodie",
+        sizes: ["S", "M", "L"],
+        stock: 35
+    },
+    {
+        name: "Women's High-Rise Jeans",
+        description: "Vintage fit high-rise denim.",
+        price: 75,
+        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80",
+        category: "Women",
+        type: "Jeans",
+        sizes: ["S", "M", "L", "XL"],
+        stock: 40
+    },
+    {
+        name: "Women's Vintage Tee",
+        description: "Soft vintage wash graphic t-shirt.",
         price: 28,
-        image: "https://images.unsplash.com/photo-1503342394128-c104d54dba01?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=800&q=80",
         category: "Women",
         type: "T-shirt",
         sizes: ["S", "M", "L"],
         stock: 45
     },
     {
-        name: "V-Neck Essential Tee",
-        description: "Perfect for layering.",
-        price: 22,
-        image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Women",
-        type: "T-shirt",
-        sizes: ["S", "M", "L"],
-        stock: 50
-    },
-    // Women's Hoodies
-    {
-        name: "Cozy Oversized Hoodie",
-        description: "Maximum comfort for lounging.",
-        price: 65,
-        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Women",
-        type: "Hoodie",
-        sizes: ["S", "M", "L"],
-        stock: 25
-    },
-    // Women's Jackets
-    {
-        name: "Faux Leather Moto Jacket",
-        description: "Adds an edge to any outfit.",
-        price: 90,
-        image: "https://images.unsplash.com/photo-1551028919-ac7eed8e329b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Women's Denim Jacket",
+        description: "Classic blue denim jacket.",
+        price: 80,
+        image: "https://images.unsplash.com/photo-1527016021513-b09758b777d5?auto=format&fit=crop&w=800&q=80",
         category: "Women",
         type: "Jacket",
         sizes: ["S", "M", "L"],
-        stock: 15
+        stock: 25
     },
-    // Women's Jeans
     {
-        name: "High Waisted Skinny Jeans",
-        description: "Flattering fit with high stretch.",
-        price: 58,
-        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Women's Cropped Hoodie",
+        description: "Sporty cropped hoodie in pink.",
+        price: 50,
+        image: "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?auto=format&fit=crop&w=800&q=80",
+        category: "Women",
+        type: "Hoodie",
+        sizes: ["S", "M", "L"],
+        stock: 30
+    },
+    {
+        name: "Women's Mom Jeans",
+        description: "Relaxed fit mom jeans.",
+        price: 68,
+        image: "https://images.unsplash.com/photo-1584370848010-d7ccb28015ae?auto=format&fit=crop&w=800&q=80",
         category: "Women",
         type: "Jeans",
         sizes: ["S", "M", "L", "XL"],
-        stock: 40
+        stock: 35
     },
-
-    // Kids
     {
-        name: "Kids Dinosaur Tee",
-        description: "Fun dinosaur print.",
-        price: 15,
-        image: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Women's Basic White Tee",
+        description: "Essential white t-shirt.",
+        price: 22,
+        image: "https://images.unsplash.com/photo-1529139574466-a302d2052574?auto=format&fit=crop&w=800&q=80",
+        category: "Women",
+        type: "T-shirt",
+        sizes: ["S", "M", "L"],
+        stock: 60
+    },
+    {
+        name: "Kids' Dino Print Tee",
+        description: "Fun dinosaur graphic tee.",
+        price: 18,
+        image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80",
         category: "Kids",
         type: "T-shirt",
         sizes: ["S", "M", "L"],
-        stock: 30
+        stock: 40
     },
     {
-        name: "Kids Denim Jacket",
-        description: "Mini version of the classic.",
-        price: 40,
-        image: "https://images.unsplash.com/photo-1622290291314-1f9f257d0322?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Kids' Denim Jacket",
+        description: "Durable denim jacket for play.",
+        price: 45,
+        image: "https://images.unsplash.com/photo-1622290291314-1f9f257d0322?auto=format&fit=crop&w=800&q=80",
         category: "Kids",
         type: "Jacket",
         sizes: ["S", "M", "L"],
         stock: 20
     },
     {
-        name: "Kids Hoodie",
-        description: "Warm and durable.",
-        price: 30,
-        image: "https://images.unsplash.com/photo-1519238809107-160d720b0051?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Kids' Yellow Hoodie",
+        description: "Bright yellow hoodie.",
+        price: 35,
+        image: "https://images.unsplash.com/photo-1519238809107-160d720b0051?auto=format&fit=crop&w=800&q=80",
         category: "Kids",
         type: "Hoodie",
         sizes: ["S", "M", "L"],
-        stock: 25
+        stock: 30
     },
     {
-        name: "Kids Comfortable Jeans",
-        description: "Elastic waist for easy wear.",
-        price: 25,
-        image: "https://plus.unsplash.com/premium_photo-1664299401726-53896dfa3b4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        name: "Kids' Comfy Jeans",
+        description: "Soft denim jeans with elastic waist.",
+        price: 28,
+        image: "https://images.unsplash.com/photo-1602826347632-004353b30bd8?auto=format&fit=crop&w=800&q=80",
         category: "Kids",
         type: "Jeans",
+        sizes: ["S", "M", "L"],
+        stock: 45
+    },
+    {
+        name: "Kids' Space Tee",
+        description: "Galaxy print t-shirt.",
+        price: 20,
+        image: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
+        category: "Kids",
+        type: "T-shirt",
         sizes: ["S", "M", "L"],
         stock: 35
     },
-
-    // More Men's
     {
-        name: "Plaid Flannel Shirt",
-        description: "Warm flannel for cooler days.",
-        price: 45,
-        image: "https://images.unsplash.com/photo-1509539665780-e32cd92a178e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Men",
-        type: "T-shirt", // Categorizing as Shirt/T-shirt for simplicity of Types requested
-        sizes: ["M", "L", "XL"],
+        name: "Kids' Puffer Jacket",
+        description: "Warm puffer jacket for winter.",
+        price: 55,
+        image: "https://images.unsplash.com/photo-1530040578505-1a3b1d9bf5b8?auto=format&fit=crop&w=800&q=80",
+        category: "Kids",
+        type: "Jacket",
+        sizes: ["S", "M", "L"],
         stock: 25
     },
     {
-        name: "Bomber Jacket",
-        description: "Sleek and stylish bomber.",
-        price: 75,
-        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Men",
-        type: "Jacket",
-        sizes: ["M", "L", "XL"],
-        stock: 15
-    },
-
-    // More Women's
-    {
-        name: "Crop Hoodie",
-        description: "Trendy cropped length.",
-        price: 40,
-        image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Women",
+        name: "Kids' Zip-Up Hoodie",
+        description: "Easy zip-up hoodie in blue.",
+        price: 38,
+        image: "https://images.unsplash.com/photo-1516082404098-92f7dc2a9df2?auto=format&fit=crop&w=800&q=80",
+        category: "Kids",
         type: "Hoodie",
         sizes: ["S", "M", "L"],
-        stock: 20
+        stock: 28
     },
     {
-        name: "Distressed Jeans",
-        description: "Ripped details for a casual vibe.",
-        price: 60,
-        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Women",
+        name: "Kids' Overalls",
+        description: "Cute denim overalls.",
+        price: 35,
+        image: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80",
+        category: "Kids",
         type: "Jeans",
         sizes: ["S", "M", "L"],
-        stock: 30
-    },
-
-    // More Kids
-    {
-        name: "Kids Graphic Tee",
-        description: "Cool space design.",
-        price: 18,
-        image: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Kids",
-        type: "T-shirt",
-        sizes: ["S", "M", "L"],
-        stock: 40
-    },
-    {
-        name: "Kids Sport Hoodie",
-        description: "Great for active kids.",
-        price: 32,
-        image: "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "Kids",
-        type: "Hoodie",
-        sizes: ["S", "M", "L"],
-        stock: 25
+        stock: 22
     }
 ];
 
@@ -232,7 +263,7 @@ const seedDB = async () => {
     try {
         await Product.deleteMany({});
         await Product.insertMany(products);
-        console.log('Database Seeded!');
+        console.log('Database Seeded Successfully!');
         process.exit();
     } catch (err) {
         console.error(err);

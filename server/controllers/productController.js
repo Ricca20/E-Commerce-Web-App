@@ -21,12 +21,10 @@ const getProducts = async (req, res) => {
             ? { category: req.query.category }
             : {};
 
-        // Size Filter
         const size = req.query.size
             ? { sizes: req.query.size }
             : {};
 
-        // Price Filter
         const minPrice = req.query.minPrice ? { price: { $gte: Number(req.query.minPrice) } } : {};
         const maxPrice = req.query.maxPrice ? { price: { ...minPrice.price, $lte: Number(req.query.maxPrice) } } : minPrice;
 
